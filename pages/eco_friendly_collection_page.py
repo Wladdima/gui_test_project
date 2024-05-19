@@ -23,7 +23,7 @@ class EcoFriendlyCollectionPage(BasePage):
 
 
     def check_compared_item_added(self):
-        self.wait.until(EC.presence_of_element_located(first_compare_item_locator))
+        self.wait_until_element_is_visible(first_compare_item_locator)
         first_compare_item = self.find(first_compare_item_locator)
         first_compare_item.is_displayed()
 
@@ -38,10 +38,10 @@ class EcoFriendlyCollectionPage(BasePage):
     def clear_compare_items(self):
         clear_compare_items_button = self.find(clear_compare_items_button_locator)
         clear_compare_items_button.click()
-        self.wait.until(EC.visibility_of_element_located(popup_accept_button_locator))
+        self.wait_until_element_is_visible(popup_accept_button_locator)
         popup_accept_button = self.find(popup_accept_button_locator)
         popup_accept_button.click()
 
 
     def check_compare_item_is_not_visible(self):
-        self.wait.until(EC.invisibility_of_element_located(first_compare_item_locator))
+        self.wait_until_element_is_not_visible(first_compare_item_locator)
