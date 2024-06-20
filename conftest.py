@@ -8,7 +8,12 @@ from time import sleep
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-extensions")
+    options.add_argument('--remote-debugging-pipe')
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     yield driver
     sleep(3)
