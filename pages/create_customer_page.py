@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 
-# first_name_field_locator = (By.ID, "firstname")
+first_name_field_locator = (By.ID, "firstname")
 last_name_field_locator = (By.ID, "lastname")
 email_field_locator = (By.ID, "email_address")
 password_field_locator = (By.ID, "password")
