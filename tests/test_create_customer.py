@@ -12,6 +12,7 @@ create_account_page_url = "customer/account/create/"
 
 
 @pytest.mark.positive
+@pytest.mark.smoke
 def test_create_new_customer(create_customer_page):
     create_customer_page.open_page()
     create_customer_page.add_first_name(first_name)
@@ -23,6 +24,7 @@ def test_create_new_customer(create_customer_page):
 
 
 @pytest.mark.negative
+@pytest.mark.extended
 def test_create_user_with_nonunique_email(create_customer_page):
     create_customer_page.open_page()
     create_customer_page.add_first_name(first_name)
@@ -34,6 +36,7 @@ def test_create_user_with_nonunique_email(create_customer_page):
 
 
 @pytest.mark.negative
+@pytest.mark.extended
 def test_create_user_without_name(create_customer_page):
     create_customer_page.open_page()
     create_customer_page.add_first_name()
