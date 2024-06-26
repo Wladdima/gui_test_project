@@ -71,7 +71,7 @@ jobs:
     needs: run-ui-tests
     steps:
       - name: Download artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/download-artifact@v4
       - name: Upload Pages artifact
         uses: actions/upload-artifact@v4
       - name: Deploy to Github Pages
