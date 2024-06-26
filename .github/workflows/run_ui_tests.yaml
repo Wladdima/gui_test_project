@@ -22,7 +22,6 @@ permissions:
   actions: read
 
 jobs:
-
   download-history: 
     runs-on: ubuntu-latest
     name: Download Allure History
@@ -70,6 +69,7 @@ jobs:
   run-ui-tests:
     runs-on: ubuntu-latest
     name: Run UI autotests
+    needs: download-history
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
