@@ -34,7 +34,9 @@ jobs:
           ARTIFACT_ID=$(curl "https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts?name=allure-results" 
           | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") 
           &&
-          curl https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts/$ARTIFACT_ID/zip 
+          curl -L 
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" 
+          "https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts/$ARTIFACT_ID/zip"
           -o artifacts.zip &&
           REPORT_ID=$(curl "https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts?name=github-pages" 
           | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") 
@@ -43,7 +45,8 @@ jobs:
           https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts/$REPORT_ID/zip 
           -o pages.zip
       - run: ls
-      - run: cat artifacts.zip
+      - run: mkdir allure-results && unzip artifacts.zip -d allure-results
+      #- run: cat artifacts.zip
       - run: mkdir old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
       - run: cp pages_history/history/* allure-results && cp -r pages_history/history allure-results
       - name: Store allure history
