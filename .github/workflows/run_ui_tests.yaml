@@ -34,7 +34,7 @@ jobs:
           ARTIFACT_ID=$(curl "https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts?name=allure-results" 
           | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") 
           &&
-          curl 
+          curl -L 
           -H "Authorization: Bearer ${{ secrets.TOKEN }}" 
           https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts/$ARTIFACT_ID/zip 
           -o artifacts.zip &&
