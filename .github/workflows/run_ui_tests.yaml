@@ -45,16 +45,16 @@ jobs:
           https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts/$REPORT_ID/zip 
           -o pages.zip
       - run: ls
-      # - run: mkdir allure-results && unzip artifacts.zip -d allure-result
-      # - run: mkdir old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
-      # - run: cp pages_history/history/* allure-results && cp -r pages_history/history allure-results
+      - run: mkdir allure-results && unzip artifacts.zip -d allure-result
+      - run: mkdir old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
+      - run: cp pages_history/history/* allure-results && cp -r pages_history/history allure-results
       - name: Store allure history
         uses: actions/upload-artifact@v4
         with:
-          # name: allure-results
-          # path: allure-results
-          name: artifacts.zip
-          path: artifacts.zip
+          name: allure-results
+          path: allure-results
+          # name: artifacts.zip
+          # path: artifacts.zip
           retention-days: 7
   
   run-ui-tests:
