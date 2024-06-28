@@ -74,7 +74,7 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v4
       - name: Rename old allure results
-        run: mv allure_results_old allure_results
+        run: mv aallure-results_old allure-results
       - name: Run all tests
         if: "github.event.inputs.deployment_target == 'all'"
         run: pytest --alluredir=allure-results
