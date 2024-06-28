@@ -41,7 +41,8 @@ jobs:
           REPORT_ID=$(curl "https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts?name=github-pages" 
           | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") 
           &&
-          curl -H "Authorization: Bearer ${{ secrets.TOKEN }}" 
+          curl -L 
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" 
           https://api.github.com/repos/Wladdima/gui_test_project/actions/artifacts/$REPORT_ID/zip 
           -o pages.zip
       - run: ls
