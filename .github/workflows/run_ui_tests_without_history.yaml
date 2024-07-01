@@ -1,4 +1,5 @@
 name: run ui test without history
+
 on: 
   workflow_dispatch:
     inputs:
