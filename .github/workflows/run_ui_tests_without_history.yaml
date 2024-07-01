@@ -1,6 +1,6 @@
 name: run ui test without history
 on: 
-    workflow_dispatch:
+  workflow_dispatch:
     inputs:
       deployment_target:
         description: Choose tests set
